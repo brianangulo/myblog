@@ -16,7 +16,7 @@ jobs:
         uses: WyriHaximus/github-action-get-previous-tag@v1
 
       - name: Set Tag to env
-        run: echo "CURRENT_TAG=${{ steps.previoustag.outputs.tag }}" >> $GITHUB_ENV
+        run: echo "CURRENT_TAG=$(git describe --abbrev=0 --tags)" >> $GITHUB_ENV
 
       - name: executing remote ssh commands using password
         uses: appleboy/ssh-action@master
