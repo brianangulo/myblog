@@ -12,15 +12,11 @@ EXPOSE 3000
 # Development build stage
 FROM common-build-stage as development-build-stage
 
-ENV NODE_ENV development
-
 CMD ["yarn", "dev"]
 
 # Production build stage
 FROM common-build-stage as production-build-stage
 
 RUN yarn build
-
-ENV NODE_ENV production
 
 CMD ["yarn", "start"]
