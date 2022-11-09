@@ -26,7 +26,7 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           user: root
           pass: ${{ secrets.SSH_PASS}}
-          args: "-tt"
+          args: -tt -vvvv
       
       - name: Create GH release
         id: creates_release
