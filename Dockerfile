@@ -17,6 +17,4 @@ CMD ["yarn", "dev"]
 # Production build stage
 FROM common-build-stage as production-build-stage
 
-RUN yarn build
-
-CMD ["yarn", "start"]
+CMD yarn build && yarn start
