@@ -22,6 +22,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
+          username: root
           password: ${{ secrets.SSH_PASS }}
           script: bash /home/docker/deploy_myblog.sh
       
