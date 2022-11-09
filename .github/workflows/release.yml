@@ -18,15 +18,13 @@ jobs:
       - name: Set Tag to env
         run: echo "CURRENT_TAG=${{ steps.previoustag.outputs.tag }}" >> $GITHUB_ENV
 
-      - name: Deploy via ssh
-        uses: fifsky/ssh-action@master
+      - name: executing remote ssh commands using password
+        uses: appleboy/ssh-action@master
         with:
-          command: |
-            bash /home/docker/deploy_myblog.sh
           host: ${{ secrets.SSH_HOST }}
-          user: root
-          pass: ${{ secrets.SSH_PASS}}
-          args: -tt -v
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.SSH_PASS }}
+          script: bash /home/docker/deploy_myblog.sh
       
       - name: Create GH release
         id: creates_release
