@@ -10,10 +10,8 @@ jobs:
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
-
-      - name: Get Previous tag
-        id: previoustag
-        uses: WyriHaximus/github-action-get-previous-tag@v1
+        with:
+          fetch-depth: 0
 
       - name: Set Tag to env
         run: echo "CURRENT_TAG=$(git describe --abbrev=0 --tags)" >> $GITHUB_ENV
