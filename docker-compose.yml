@@ -6,7 +6,7 @@ services:
       context: ./
       target: production-build-stage
       dockerfile: Dockerfile
-    container_name: server
+    container_name: my_blog
     volumes:
       - ./:/app
       - /app/node_modules
@@ -18,5 +18,5 @@ volumes:
 
 networks:
     default:
-        name: network
+        name: server_internal
         external: true

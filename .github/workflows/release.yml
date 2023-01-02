@@ -16,13 +16,13 @@ jobs:
       - name: Set Tag to env
         run: echo "CURRENT_TAG=$(git describe --abbrev=0 --tags)" >> $GITHUB_ENV
 
-      - name: executing remote ssh commands using password
+      - name: Deploying using ssh
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
-          username: root
-          password: ${{ secrets.SSH_PASS }}
-          script: bash /home/docker/deploy_myblog.sh
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: cd /home/myblog && bash server_deploy.sh
       
       - name: Create GH release
         id: creates_release
