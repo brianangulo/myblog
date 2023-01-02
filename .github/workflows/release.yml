@@ -17,12 +17,12 @@ jobs:
         run: echo "CURRENT_TAG=$(git describe --abbrev=0 --tags)" >> $GITHUB_ENV
 
       - name: Deploying using ssh
-        uses: appleboy/ssh-action@master
+        uses: fifsky/ssh-action@master
         with:
+          command: cd /home/myblog && bash server_deploy.sh
           host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
+          user: root
           key: ${{ secrets.SSH_KEY }}
-          script: cd /home/myblog && bash server_deploy.sh
       
       - name: Create GH release
         id: creates_release
