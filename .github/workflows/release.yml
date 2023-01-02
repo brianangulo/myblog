@@ -19,7 +19,7 @@ jobs:
       - name: Deploying using ssh
         uses: fifsky/ssh-action@master
         with:
-          command: cd /home/myblog && bash server_deploy.sh
+          command: bash /home/myblog/server_deploy.sh
           host: ${{ secrets.SSH_HOST }}
           user: root
           key: ${{ secrets.SSH_KEY }}
